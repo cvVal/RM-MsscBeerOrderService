@@ -29,9 +29,9 @@ public class BeerOrderServiceImpl implements BeerOrderService {
     private final BeerOrderMapper beerOrderMapper;
     private final ApplicationEventPublisher publisher;
 
-    public BeerOrderServiceImpl(BeerOrderRepository beerOrderRepository,
-                                CustomerRepository customerRepository,
+    public BeerOrderServiceImpl(BeerOrderRepository beerOrderRepository, CustomerRepository customerRepository,
                                 BeerOrderMapper beerOrderMapper, ApplicationEventPublisher publisher) {
+
         this.beerOrderRepository = beerOrderRepository;
         this.customerRepository = customerRepository;
         this.beerOrderMapper = beerOrderMapper;
@@ -40,6 +40,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
 
     @Override
     public BeerOrderPagedList listOrders(UUID customerId, Pageable pageable) {
+
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
         if (customerOptional.isPresent()) {
